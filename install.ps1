@@ -19,6 +19,9 @@ $script:wslVpnKitUrl = "https://github.com/sakai135/wsl-vpnkit/releases/download
 $script:restartRequired = $false
 $script:bashProfilePath = "C:\Users\$env:UserName\.bash_profile"
 
+# Speeds up the download using Invoke-WebRequest at the cost of not showing the progress
+$ProgressPreference = 'SilentlyContinue'
+
 #endregion
 
 #region functions
