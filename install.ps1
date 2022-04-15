@@ -79,7 +79,7 @@ function DownloadDockerD
 
     [Environment]::SetEnvironmentVariable("Path", "$($env:path);$script:dockerFilesPath", [System.EnvironmentVariableTarget]::Machine)
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-    dockerd --register-service
+    dockerd -H npipe:////./pipe/docker_engine_win --register-service
 
     Write-Host "dockerd successfully installed." -ForegroundColor Green
 }
@@ -115,7 +115,7 @@ function CreateWindowsContext
 
     if(-Not($winContextExists))
     {
-        docker context create win --docker host=npipe:////./pipe/docker_engine
+        docker context create win --docker host=npipe:////./pipe/docker_engine_win
     }
 
     Write-Host "Windows context successfully installed." -ForegroundColor Green
